@@ -1,0 +1,17 @@
+<view class="page px-4">
+  <view class="block py-4 bg-#ff0 h-[200rpx]">
+    <text>Example for `mp-icon` component</text>
+  </view>
+
+  <!-- Example for use weui `mp-icon` component -->
+  <view class="block py-4 flex gap-4">
+    <mp-icon icon="add" color="black" size="{{25}}"></mp-icon>
+    <mp-icon icon="translate" color="black" size="{{25}}"></mp-icon>
+
+    <app-icon name="x" color="black" size="{{25}}"></app-icon>
+  </view>
+
+  <view class="block py-4">
+    <text>{{time}}</text>
+  </view>
+</view>

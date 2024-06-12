@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": false,
+  "useTabs": false,
+  "tabWidth": 2,
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": ["*.wxml"],
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": ["*.wxss"],
+      "options": {
+        "parser": "css"
+      }
+    }
+  ]
+}
