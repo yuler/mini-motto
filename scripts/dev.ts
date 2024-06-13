@@ -8,7 +8,7 @@ import { execa } from 'execa'
 const srcDir = path.resolve(root, projectJSON.srcMiniprogramRoot)
 
 // Build first, then watch
-execa('npm', ['run', 'build'], { cwd: root }).stdout?.pipe(process.stdout)
+execa('pnpm', ['run', 'build'], { cwd: root }).stdout?.pipe(process.stdout)
 
 // Watch `.env`, reload `dotenv`
 chokidar.watch('.env').on('change', () => {

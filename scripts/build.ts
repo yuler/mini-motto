@@ -49,7 +49,7 @@ export function buildTS(
     define: {
       __APP_ID__: JSON.stringify(projectJSON.appid),
       __APP_VERSION__: JSON.stringify(packageJSON.version),
-      __APP_API_ROOT__: JSON.stringify(process.env.APP_API_ROOT),
+      __API_ROOT__: JSON.stringify(process.env.API_ROOT),
       __BUILD_TIME__: JSON.stringify(format(new Date(), 'yyyy-MM-dd HH:mm:ss')),
     },
   })

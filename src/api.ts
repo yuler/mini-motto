@@ -30,7 +30,7 @@ export async function api<T = any>({
       headers['Authorization'] = `Bearer ${token}`
     }
     const requestTask = wx.request<{ code: number; msg: string }>({
-      url: `${__APP_API_ROOT__}/${url}`,
+      url: `${__API_ROOT__}/${url}`,
       method,
       dataType: 'json',
       data,
