@@ -5,4 +5,8 @@
     <text class="block text-2xl">{{quote.content}}</text>
     <text class="block text-right">--{{quote.author}}</text>
   </block>
+
+  <button bind:tap="onTest">点击</button>
+
+  <canvas type="2d" id="canvas" class="fixed inset-0 -z-1 w-screen h-screen" />
 </view>

@@ -13,6 +13,7 @@ export default defineConfig({
   preflights: [],
   shortcuts: [
     {
+      'inset-0': 'top-0 right-0 bottom-0 left-0',
       'border-t': 'border-0 border-t-1 border-solid border-gray-200',
     },
   ],
