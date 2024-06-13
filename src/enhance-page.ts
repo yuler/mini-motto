@@ -1,4 +1,5 @@
 import { IApp } from './app'
+import { $login } from './helper'
 
 interface Data {
   $loading: boolean
@@ -38,34 +39,16 @@ export default function enhancePage<
   ) {
     const $app = getApp<IApp>()
     $app.$log('enhancePage', '#onLoad', { query })
-    // TODO: Login by wx.login
-    // if (!wx.getStorageSync('TOKEN')) {
-    //   await (async function loginWithRetry() {
-    //     try {
-    //       const $app = getApp<IApp>()
-    //       const { code } = await wx.login()
-    //       const { token } = await $app.$api<{ token: string }>({
-    //         url: 'login',
-    //         method: 'POST',
-    //         data: {
-    //           code,
-    //         },
-    //       })
-    //       wx.setStorageSync('TOKEN', token)
-    //     } catch (error) {
-    //       console.log(error)
-    //       if (
-    //         error === 401 &&
-    //         $app.$state.retryLogin < $app.$state.retryLoginMax
-    //       ) {
-    //         $app.$state.retryLogin++
-    //         await loginWithRetry()
-    //       } else {
-    //         console.log(error)
-    //       }
-    //     }
-    //   })()
-    // }
+
+    if (!wx.getStorageSync('TOKEN')) {
+      try {
+        const token = await $login({ retry: $app.$state.loginRetryTimes })
+        wx.setStorageSync('TOKEN', token)
+      } catch {
+        // TODO: handle error
+        $app.$alert('Login failed')
+      }
+    }
     await originOnLoad?.call(this, query)
     onLoadComplete = true
     $app.$log('enhancePage', '#onLoad complete')

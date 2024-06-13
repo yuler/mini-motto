@@ -1,15 +1,14 @@
 import mitt from 'mitt'
 
 import { TABS } from './constants'
-import { api as $api } from './api'
+import { $api } from './api'
 
 const emitter = mitt()
 
 export interface IApp {
   $system?: MP.SystemInfo
   $state: {
-    retryLogin: number
-    retryLoginMax: number
+    loginRetryTimes: number
     user?: {
       avatar: string
       nickname: string

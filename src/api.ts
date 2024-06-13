@@ -1,5 +1,7 @@
+import { ensurePrefix } from './utils'
+
 // https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html
-export async function api<T = any>({
+export async function $api<T = any>({
   url,
   method,
   data,
@@ -30,7 +32,7 @@ export async function api<T = any>({
       headers['Authorization'] = `Bearer ${token}`
     }
     const requestTask = wx.request<{ code: number; msg: string }>({
-      url: `${__API_ROOT__}/${url}`,
+      url: `${__API_ROOT__}${ensurePrefix('/', url)}`,
       method,
       dataType: 'json',
       data,
@@ -39,11 +41,6 @@ export async function api<T = any>({
         // Http code error
         if (response.statusCode < 200 || response.statusCode >= 300) {
           reject(response)
-        }
-
-        // Biz code error
-        if (response.data.code !== 0) {
-          reject(response.data)
         }
 
         resolve(response.data as T)

@@ -1,14 +1,7 @@
-export function promisify<T extends (...args: any[]) => any>(api: T) {
-  return (options?: Parameters<T>[0]) =>
-    new Promise<Parameters<NonNullable<Parameters<T>[0]['success']>>[0]>(
-      (resolve, reject) => {
-        return api({
-          success: resolve,
-          fail: reject,
-          ...(options as object),
-        })
-      },
-    )
+export function noop() {}
+
+export function ensurePrefix(prefix: string, str: string) {
+  return str.startsWith(prefix) ? str : prefix + str
 }
 
 export async function sleep(ms: number) {
